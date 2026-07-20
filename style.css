@@ -2,120 +2,219 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial;
+font-family:sans-serif;
 }
 
 body{
+
 height:100vh;
 overflow:hidden;
+
+background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+
+background-size:400% 400%;
+
+animation:bg 12s infinite;
+
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
-background-size:400% 400%;
-animation:bg 12s infinite alternate;
+
+color:white;
+
 }
 
 @keyframes bg{
+
 0%{background-position:0% 50%;}
-100%{background-position:100% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
 }
 
-.container{
+.page{
+
+display:none;
 text-align:center;
-color:white;
-z-index:2;
+animation:fade .6s;
+
+}
+
+.active{
+
+display:block;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+transform:translateY(40px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
 }
 
 button{
+
 padding:15px 35px;
+font-size:20px;
 margin:20px;
-font-size:22px;
 border:none;
-border-radius:15px;
+border-radius:50px;
 cursor:pointer;
+
 transition:.3s;
+
 }
 
-button:hover{
+#yes{
+
+background:#ff4d88;
+color:white;
+
+}
+
+#yes:hover{
+
 transform:scale(1.1);
+
+}
+
+#no{
+
+background:white;
+
 }
 
 .photo{
+
 width:320px;
 border-radius:20px;
-margin:20px;
-box-shadow:0 0 30px white;
+
+box-shadow:0 15px 40px rgba(0,0,0,.4);
+
 }
 
-.hidden{
-display:none;
+.dateBox{
+
+font-size:45px;
+padding:30px;
+background:white;
+color:#ff4d88;
+border-radius:20px;
+
+margin:30px;
+
 }
 
-.food-grid{
+.grid{
+
 display:grid;
+
 grid-template-columns:repeat(2,180px);
-gap:15px;
+
+gap:20px;
+
 justify-content:center;
-margin-top:20px;
+
+margin-top:30px;
+
 }
 
 .food{
+
 background:white;
-color:#ff4f81;
-padding:20px;
-border-radius:15px;
+color:#444;
+
+padding:25px;
+
+border-radius:20px;
+
+font-size:24px;
+
 cursor:pointer;
-font-size:20px;
+
 transition:.3s;
+
 }
 
 .food:hover{
-transform:translateY(-5px);
-background:#ff4f81;
-color:white;
-}
 
-.selected{
-background:#ff4f81;
-color:white;
-}
+transform:translateY(-8px) scale(1.05);
 
-#message{
-margin-top:30px;
-font-size:32px;
-font-weight:bold;
-color:#fff700;
-}
+background:#ffe4f2;
 
-.heart{
-position:fixed;
-color:red;
-font-size:30px;
-animation:float 6s linear infinite;
-transform-style:preserve-3d;
-text-shadow:0 0 15px red;
-}
-
-@keyframes float{
-0%{
-transform:translateY(100vh) rotateY(0deg);
-}
-100%{
-transform:translateY(-120vh) rotateY(720deg);
-}
 }
 
 #cursor{
-position:fixed;
-width:20px;
-height:20px;
+
+width:18px;
+height:18px;
+
+background:#fff;
+
 border-radius:50%;
-background:white;
+
+position:fixed;
+
 pointer-events:none;
+
 box-shadow:
-0 0 10px white,
-0 0 20px pink,
-0 0 40px hotpink;
+
+0 0 20px white,
+
+0 0 50px pink,
+
+0 0 80px deeppink;
+
 transform:translate(-50%,-50%);
+
+z-index:999;
+
+}
+
+.heart{
+
+position:fixed;
+
+font-size:30px;
+
+animation:heart 6s linear infinite;
+
+}
+
+@keyframes heart{
+
+0%{
+
+transform:translateY(100vh) scale(.5) rotateY(0deg);
+
+opacity:0;
+
+}
+
+20%{
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh) scale(1.5) rotateY(360deg);
+
+opacity:0;
+
+}
+
 }

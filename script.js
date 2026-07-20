@@ -1,25 +1,30 @@
 const yes=document.getElementById("yes");
 const no=document.getElementById("no");
 const result=document.getElementById("result");
-const music=document.getElementById("music");
 
 yes.onclick=()=>{
-
-result.style.display="block";
-
-music.play();
-
-};
+result.classList.remove("hidden");
+}
 
 no.onmouseover=()=>{
-
 no.style.position="absolute";
+no.style.left=Math.random()*80+"%";
+no.style.top=Math.random()*80+"%";
+}
 
-no.style.left=Math.random()*80+"vw";
+document.querySelectorAll(".food").forEach(item=>{
 
-no.style.top=Math.random()*80+"vh";
+item.onclick=()=>{
 
-};
+document.querySelectorAll(".food").forEach(i=>i.classList.remove("selected"));
+
+item.classList.add("selected");
+
+document.getElementById("message").innerHTML="❤️ I love emmmm ❤️";
+
+}
+
+});
 
 setInterval(()=>{
 
@@ -27,17 +32,17 @@ const heart=document.createElement("div");
 
 heart.className="heart";
 
-heart.innerHTML="💖";
+heart.innerHTML="❤";
 
 heart.style.left=Math.random()*100+"vw";
 
-heart.style.animationDuration=3+Math.random()*5+"s";
-
-heart.style.fontSize=20+Math.random()*30+"px";
+heart.style.fontSize=(20+Math.random()*40)+"px";
 
 document.body.appendChild(heart);
 
-setTimeout(()=>heart.remove(),7000);
+setTimeout(()=>{
+heart.remove();
+},6000);
 
 },250);
 
@@ -46,7 +51,6 @@ const cursor=document.getElementById("cursor");
 document.addEventListener("mousemove",(e)=>{
 
 cursor.style.left=e.clientX+"px";
-
 cursor.style.top=e.clientY+"px";
 
 });

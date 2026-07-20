@@ -1,0 +1,1 @@
+body{margin:0;font-family:Arial;background:linear-gradient(#ffd6e7,#fff);display:flex;justify-content:center;align-items:center;height:100vh;overflow:hidden}.box{text-align:center}button{padding:14px 28px;border-radius:30px;border:none;margin:10px;font-size:20px;cursor:pointer}#yes{background:#ff4f93;color:#fff}#no{position:absolute;background:#eee}

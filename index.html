@@ -1,49 +1,85 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Đi chơi với anh nhé ❤️</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>For You ❤️</title>
+
 <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
 <div id="cursor"></div>
 
-<div class="container">
+<div id="hearts"></div>
 
-<h1>Em có đồng ý đi chơi với anh không? ❤️</h1>
+<section id="page1" class="page active">
+
+<h1>💌 Em đồng ý đi chơi với anh nha?</h1>
 
 <div class="buttons">
-<button id="yes">YES 💖</button>
+<button id="yes">YES ❤️</button>
 <button id="no">NO 😢</button>
 </div>
 
-<div id="result" class="hidden">
+</section>
+
+<section id="page2" class="page">
+
+<h2>📸 Hai đứa mình nè ❤️</h2>
 
 <img src="images/couple.jpg" class="photo">
 
+<button id="next1">Tiếp tục ➜</button>
+
+</section>
+
+<section id="page3" class="page">
+
 <h2>📅 Ngày đi chơi</h2>
 
-<input type="date" value="2026-07-25">
+<div class="dateBox">
+
+25 / 07
+
+</div>
+
+<button id="next2">Tiếp tục ➜</button>
+
+</section>
+
+<section id="page4" class="page">
 
 <h2>📍 Em muốn ăn gì?</h2>
 
-<div class="food-grid">
+<div class="grid">
 
-<div class="food">🍝 Đồ Âu</div>
-<div class="food">🍜 Đồ Hàn</div>
-<div class="food">🍣 Đồ Nhật</div>
-<div class="food">🍲 Đồ Việt</div>
-<div class="food">🌶️ Đồ Thái</div>
+<div class="food">🍝<br>Đồ Âu</div>
 
-</div>
+<div class="food">🍜<br>Đồ Hàn</div>
 
-<p id="message"></p>
+<div class="food">🍣<br>Đồ Nhật</div>
 
-</div>
+<div class="food">🍲<br>Đồ Việt</div>
+
+<div class="food">🌶️<br>Đồ Thái</div>
 
 </div>
+
+</section>
+
+<section id="page5" class="page">
+
+<h1>
+
+💬 I love emmmm ❤️
+
+</h1>
+
+</section>
 
 <script src="script.js"></script>
 

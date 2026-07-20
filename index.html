@@ -3,62 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Đi chơi với anh nha ❤️</title>
-
+<title>Đi chơi với anh nhé ❤️</title>
 <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
 <div id="cursor"></div>
 
-<audio id="music" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
-
 <div class="container">
 
-<h1>Anh có một câu hỏi ❤️</h1>
-
-<h2>Em đi chơi với anh nha?</h2>
+<h1>Em có đồng ý đi chơi với anh không? ❤️</h1>
 
 <div class="buttons">
-
-<button id="yes">YES ❤️</button>
-
+<button id="yes">YES 💖</button>
 <button id="no">NO 😢</button>
-
 </div>
 
-<div id="result">
-
-<h2>I love emmmm ❤️</h2>
+<div id="result" class="hidden">
 
 <img src="images/couple.jpg" class="photo">
 
-<div class="info">
-
-<label>📅 Ngày đi chơi</label>
+<h2>📅 Ngày đi chơi</h2>
 
 <input type="date" value="2026-07-25">
 
-<label>📍 Muốn ăn gì?</label>
+<h2>📍 Em muốn ăn gì?</h2>
 
-<select>
+<div class="food-grid">
 
-<option>Đồ Âu</option>
-
-<option>Đồ Hàn</option>
-
-<option>Đồ Nhật</option>
-
-<option>Đồ Việt</option>
-
-<option>Đồ Thái</option>
-
-</select>
+<div class="food">🍝 Đồ Âu</div>
+<div class="food">🍜 Đồ Hàn</div>
+<div class="food">🍣 Đồ Nhật</div>
+<div class="food">🍲 Đồ Việt</div>
+<div class="food">🌶️ Đồ Thái</div>
 
 </div>
+
+<p id="message"></p>
 
 </div>
 

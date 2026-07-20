@@ -1,1 +1,179 @@
-body{margin:0;font-family:Arial;background:linear-gradient(#ffd6e7,#fff);display:flex;justify-content:center;align-items:center;height:100vh;overflow:hidden}.box{text-align:center}button{padding:14px 28px;border-radius:30px;border:none;margin:10px;font-size:20px;cursor:pointer}#yes{background:#ff4f93;color:#fff}#no{position:absolute;background:#eee}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+
+background:linear-gradient(-45deg,
+#ff9a9e,
+#fad0c4,
+#a18cd1,
+#fbc2eb);
+
+background-size:400% 400%;
+
+animation:bg 12s ease infinite;
+
+}
+
+@keyframes bg{
+
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+
+}
+
+.container{
+
+background:white;
+padding:40px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 15px 40px rgba(0,0,0,.3);
+z-index:2;
+
+}
+
+button{
+
+padding:15px 35px;
+margin:15px;
+font-size:20px;
+border:none;
+border-radius:40px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+#yes{
+
+background:#ff4081;
+color:white;
+
+}
+
+#yes:hover{
+
+transform:scale(1.15);
+
+}
+
+#no{
+
+background:#ddd;
+
+}
+
+.photo{
+
+margin-top:20px;
+width:300px;
+border-radius:20px;
+box-shadow:0 0 25px hotpink;
+
+}
+
+.info{
+
+margin-top:20px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+input,select{
+
+padding:12px;
+border-radius:10px;
+font-size:18px;
+
+}
+
+#result{
+
+display:none;
+
+}
+
+.heart{
+
+position:fixed;
+
+bottom:-30px;
+
+font-size:25px;
+
+animation:fly linear forwards;
+
+transform-style:preserve-3d;
+
+filter:drop-shadow(0 0 8px pink);
+
+}
+
+@keyframes fly{
+
+0%{
+
+transform:translateY(0) rotateY(0deg) scale(1);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:translateY(-120vh)
+rotateY(720deg)
+scale(2);
+
+opacity:0;
+
+}
+
+}
+
+#cursor{
+
+position:fixed;
+
+width:25px;
+
+height:25px;
+
+background:white;
+
+border-radius:50%;
+
+pointer-events:none;
+
+mix-blend-mode:screen;
+
+box-shadow:
+
+0 0 10px white,
+
+0 0 30px hotpink,
+
+0 0 60px deeppink;
+
+transform:translate(-50%,-50%);
+
+z-index:999;
+
+}

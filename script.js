@@ -1,54 +1,50 @@
 const pages=document.querySelectorAll(".page");
 
-function show(i){
+function show(index){
 
 pages.forEach(p=>p.classList.remove("active"));
 
-pages[i].classList.add("active");
+pages[index].classList.add("active");
 
 }
 
-document.getElementById("yes").onclick=()=>{
+document.getElementById("yes").onclick=()=>show(1);
 
-show(1);
+document.querySelector("#page2 .next").onclick=()=>show(2);
 
-}
+let selectedFood="";
 
-document.getElementById("next1").onclick=()=>{
+document.querySelectorAll(".food").forEach(food=>{
 
-show(2);
+food.onclick=()=>{
 
-}
+selectedFood=food.innerText;
 
-document.getElementById("next2").onclick=()=>{
+document.getElementById("foodResult").innerHTML="🍽️ "+selectedFood;
 
 show(3);
 
 }
 
-document.querySelectorAll(".food").forEach(item=>{
+})
 
-item.onclick=()=>{
+document.querySelector("#page4 .next").onclick=()=>show(4);
 
-show(4);
+document.getElementById("no").onmouseover=()=>{
+
+const btn=document.getElementById("no");
+
+btn.style.position="absolute";
+
+btn.style.left=Math.random()*80+"%";
+
+btn.style.top=Math.random()*80+"%";
 
 }
 
-});
+// glowing cursor
 
-const no=document.getElementById("no");
-
-no.addEventListener("mouseover",()=>{
-
-no.style.position="absolute";
-
-no.style.left=Math.random()*80+"%";
-
-no.style.top=Math.random()*80+"%";
-
-});
-
-const cursor=document.getElementById("cursor");
+const cursor=document.querySelector(".cursor");
 
 document.addEventListener("mousemove",e=>{
 
@@ -57,6 +53,8 @@ cursor.style.left=e.clientX+"px";
 cursor.style.top=e.clientY+"px";
 
 });
+
+// hearts
 
 const hearts=document.getElementById("hearts");
 
@@ -70,7 +68,9 @@ h.innerHTML="❤️";
 
 h.style.left=Math.random()*100+"vw";
 
-h.style.fontSize=(20+Math.random()*40)+"px";
+h.style.fontSize=(20+Math.random()*25)+"px";
+
+h.style.animationDuration=(5+Math.random()*5)+"s";
 
 hearts.appendChild(h);
 
@@ -78,6 +78,6 @@ setTimeout(()=>{
 
 h.remove();
 
-},6000);
+},10000);
 
-},300);
+},350);

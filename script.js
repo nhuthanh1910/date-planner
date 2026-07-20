@@ -1,56 +1,83 @@
-const yes=document.getElementById("yes");
-const no=document.getElementById("no");
-const result=document.getElementById("result");
+const pages=document.querySelectorAll(".page");
 
-yes.onclick=()=>{
-result.classList.remove("hidden");
+function show(i){
+
+pages.forEach(p=>p.classList.remove("active"));
+
+pages[i].classList.add("active");
+
 }
 
-no.onmouseover=()=>{
-no.style.position="absolute";
-no.style.left=Math.random()*80+"%";
-no.style.top=Math.random()*80+"%";
+document.getElementById("yes").onclick=()=>{
+
+show(1);
+
+}
+
+document.getElementById("next1").onclick=()=>{
+
+show(2);
+
+}
+
+document.getElementById("next2").onclick=()=>{
+
+show(3);
+
 }
 
 document.querySelectorAll(".food").forEach(item=>{
 
 item.onclick=()=>{
 
-document.querySelectorAll(".food").forEach(i=>i.classList.remove("selected"));
-
-item.classList.add("selected");
-
-document.getElementById("message").innerHTML="❤️ I love emmmm ❤️";
+show(4);
 
 }
 
 });
 
-setInterval(()=>{
+const no=document.getElementById("no");
 
-const heart=document.createElement("div");
+no.addEventListener("mouseover",()=>{
 
-heart.className="heart";
+no.style.position="absolute";
 
-heart.innerHTML="❤";
+no.style.left=Math.random()*80+"%";
 
-heart.style.left=Math.random()*100+"vw";
+no.style.top=Math.random()*80+"%";
 
-heart.style.fontSize=(20+Math.random()*40)+"px";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},6000);
-
-},250);
+});
 
 const cursor=document.getElementById("cursor");
 
-document.addEventListener("mousemove",(e)=>{
+document.addEventListener("mousemove",e=>{
 
 cursor.style.left=e.clientX+"px";
+
 cursor.style.top=e.clientY+"px";
 
 });
+
+const hearts=document.getElementById("hearts");
+
+setInterval(()=>{
+
+const h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.fontSize=(20+Math.random()*40)+"px";
+
+hearts.appendChild(h);
+
+setTimeout(()=>{
+
+h.remove();
+
+},6000);
+
+},300);

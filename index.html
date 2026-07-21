@@ -2,206 +2,243 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>em đi chơi với anh nha</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đi date với anh nha ❤️</title>
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
+font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
 overflow:hidden;
 height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-background:linear-gradient(-45deg,#ff8fb1,#ffd6e7,#ffc1cc,#ffe9f2);
+background:linear-gradient(-45deg,#ff9ecf,#ffd6e8,#ffc6ff,#ffe5ec);
 background-size:400% 400%;
-animation:bg 10s ease infinite;
-}
-
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-.container{
-position:relative;
-z-index:5;
-background:white;
-padding:40px;
-border-radius:25px;
-text-align:center;
-box-shadow:0 15px 35px rgba(0,0,0,.2);
-width:750px;
-max-height:90vh;
-overflow:auto;
-}
-
-h1{
-color:#ff3d7f;
-margin-bottom:20px;
-}
-
-button{
-padding:14px 35px;
-border:none;
-border-radius:30px;
-font-size:18px;
-margin:10px;
-cursor:pointer;
-transition:.3s;
-}
-
-#yes{
-background:#ff4f91;
+animation:bg 12s ease infinite;
 color:white;
 }
 
-#yes:hover{
-transform:scale(1.1);
+@keyframes bg{
+0%{background-position:0 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0 50%;}
 }
 
-#no{
-background:#ddd;
+.page{
 position:absolute;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:.5s;
 }
 
 .hidden{
 display:none;
 }
 
-.calendar{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:10px;
-margin-top:20px;
+h1{
+font-size:45px;
+text-shadow:0 5px 15px rgba(0,0,0,.2);
+margin-bottom:25px;
 }
 
-.day{
-padding:15px;
-background:#ffe4ef;
-border-radius:15px;
+button{
+padding:15px 40px;
+border:none;
+border-radius:40px;
+font-size:22px;
 cursor:pointer;
+margin:10px;
 transition:.3s;
-font-weight:bold;
 }
 
-.day:hover{
-background:#ff7fab;
+.yes{
+background:#ff4f8b;
 color:white;
+}
+
+.no{
+background:white;
+color:#ff4f8b;
+}
+
+button:hover{
 transform:scale(1.08);
 }
 
-.food-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:15px;
-margin-top:25px;
-}
-
-.food{
-background:#fff0f6;
-padding:18px;
-border-radius:20px;
-cursor:pointer;
-transition:.3s;
-font-weight:bold;
-}
-
-.food:hover{
-background:#ff5d98;
-color:white;
-transform:translateY(-5px);
-}
-
-.final{
-font-size:22px;
-line-height:2;
-color:#ff2f78;
-}
+/* 3D Heart */
 
 .heart{
-position:absolute;
-bottom:-30px;
-color:red;
-font-size:30px;
-animation:fly 7s linear infinite;
-transform-style:preserve-3d;
+width:140px;
+height:140px;
+background:red;
+position:relative;
+transform:rotate(-45deg);
+animation:beat 1s infinite;
+box-shadow:0 20px 40px rgba(255,0,80,.5);
+margin-bottom:40px;
 }
 
-@keyframes fly{
-0%{
-transform:translateY(0) rotateY(0deg);
-opacity:1;
+.heart:before,
+.heart:after{
+content:"";
+position:absolute;
+width:140px;
+height:140px;
+background:red;
+border-radius:50%;
 }
-100%{
-transform:translateY(-110vh) rotateY(720deg);
-opacity:0;
+
+.heart:before{
+top:-70px;
+left:0;
+}
+
+.heart:after{
+left:70px;
+top:0;
+}
+
+@keyframes beat{
+50%{
+transform:rotate(-45deg) scale(1.08);
 }
 }
+
+/* Sakura */
 
 .petal{
 position:absolute;
 top:-20px;
 font-size:22px;
-animation:fall linear infinite;
+animation:fall linear forwards;
 }
 
 @keyframes fall{
 to{
-transform:
-translateY(110vh)
-translateX(120px)
-rotate(360deg);
+transform:translateY(110vh) rotate(360deg);
+opacity:.3;
 }
 }
 
-.cursor{
-position:fixed;
-width:18px;
-height:18px;
-border-radius:50%;
-background:#fff;
-pointer-events:none;
-box-shadow:
-0 0 10px white,
-0 0 20px hotpink,
-0 0 40px deeppink;
-transform:translate(-50%,-50%);
-z-index:9999;
+.calendar{
+background:white;
+color:#444;
+padding:20px;
+border-radius:20px;
 }
 
+.calendar h2{
+text-align:center;
+margin-bottom:15px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(7,60px);
+gap:8px;
+}
+
+.day{
+height:60px;
+display:flex;
+justify-content:center;
+align-items:center;
+border-radius:10px;
+cursor:pointer;
+background:#f2f2f2;
+transition:.2s;
+}
+
+.day:hover{
+background:#ff8ab5;
+color:white;
+}
+
+.selected{
+background:#ff4f8b!important;
+color:white;
+}
+
+.food-grid{
+display:grid;
+grid-template-columns:repeat(4,180px);
+gap:15px;
+margin-top:25px;
+}
+
+.food{
+background:white;
+color:#444;
+padding:18px;
+border-radius:15px;
+cursor:pointer;
+text-align:center;
+transition:.3s;
+}
+
+.food:hover{
+background:#ff6aa5;
+color:white;
+transform:scale(1.05);
+}
+
+#message{
+font-size:32px;
+margin-top:25px;
+font-weight:bold;
+}
+
+#confirm{
+text-align:center;
+}
+
+#confirm h2{
+font-size:42px;
+margin-bottom:20px;
+}
 </style>
-</head>
 
+</head>
 <body>
 
-<div class="cursor"></div>
+<div id="cursor"></div>
 
-<div class="container">
+<div id="home" class="page">
 
-<div id="page1">
-<h1>💖 Em đi chơi với anh nha? 💖</h1>
+<div class="heart"></div>
 
-<button id="yes">YES ❤️</button>
-<button id="no">NO 😝</button>
+<h1>Em đi date với Anh nha? ❤️</h1>
+
+<div>
+<button class="yes" onclick="openCalendar()">YES</button>
+<button class="no">NO 😢</button>
 </div>
-
-<div id="page2" class="hidden">
-<h1>📅 Chọn ngày đi với anh nha</h1>
-
-<div class="calendar" id="calendar"></div>
 
 </div>
 
-<div id="page3" class="hidden">
+<div id="calendarPage" class="page hidden">
 
-<h1>📍 Chàng trai của anh muốn ăn gì nào?</h1>
+<div class="calendar">
+
+<h2>📅 Em chọn ngày đi chơi ik</h2>
+
+<div class="grid" id="days"></div>
+
+</div>
+
+</div>
+
+<div id="foodPage" class="page hidden">
+
+<h2>📍 Chàng trai của anh muốn ăn gì nào?</h2>
 
 <div class="food-grid">
 
@@ -216,110 +253,105 @@ z-index:9999;
 
 </div>
 
+<div id="message">
+I love emmmm ❤️
 </div>
 
-<div id="page4" class="hidden">
+<br>
 
-<h1>❤️ I love emmmm ❤️</h1>
-
-<div class="final">
-
-<p>📅 Ngày hẹn: <span id="chosenDay"></span></p>
-
-<p>🕑 Thời gian: <b>14:00</b></p>
-
-<p>🍽️ Món ăn: <span id="food"></span></p>
-
-<h2 style="margin-top:20px;">💖 Anh rất vui vì em đã đồng ý đi với anh 💖</h2>
+<button class="yes" onclick="finish()">Xác nhận</button>
 
 </div>
 
-</div>
+<div id="confirm" class="page hidden">
+
+<h2>🎉 Lịch date đã được xác nhận</h2>
+
+<h1 id="result"></h1>
+
+<h2>⏰ Thời gian: 14:00</h2>
+
+<p style="font-size:30px;">❤️ Bông biêng rất vui vì em đã đồng ý đi date ❤️</p>
 
 </div>
 
 <script>
 
-const cursor=document.querySelector(".cursor");
+for(let i=0;i<40;i++){
+let p=document.createElement("div");
+p.className="petal";
+p.innerHTML="🌸";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=5+Math.random()*5+"s";
+p.style.fontSize=15+Math.random()*20+"px";
+document.body.appendChild(p);
+}
+
+let cursor=document.createElement("div");
+cursor.style.position="fixed";
+cursor.style.width="18px";
+cursor.style.height="18px";
+cursor.style.borderRadius="50%";
+cursor.style.background="#fff";
+cursor.style.pointerEvents="none";
+cursor.style.boxShadow="0 0 20px white,0 0 40px pink";
+cursor.style.transform="translate(-50%,-50%)";
+document.body.appendChild(cursor);
 
 document.addEventListener("mousemove",e=>{
 cursor.style.left=e.clientX+"px";
 cursor.style.top=e.clientY+"px";
 });
 
-const no=document.getElementById("no");
+const days=document.getElementById("days");
 
-no.onmouseover=()=>{
-no.style.left=Math.random()*500+"px";
-no.style.top=Math.random()*250+"px";
-}
-
-for(let i=0;i<40;i++){
-
-let h=document.createElement("div");
-h.className="heart";
-h.innerHTML="❤";
-h.style.left=Math.random()*100+"vw";
-h.style.animationDuration=4+Math.random()*5+"s";
-h.style.fontSize=20+Math.random()*25+"px";
-document.body.appendChild(h);
-
-}
-
-for(let i=0;i<40;i++){
-
-let p=document.createElement("div");
-p.className="petal";
-p.innerHTML="🌸";
-p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=5+Math.random()*8+"s";
-p.style.animationDelay=Math.random()*5+"s";
-document.body.appendChild(p);
-
-}
-
-const calendar=document.getElementById("calendar");
+let selectedDate="";
 
 for(let i=1;i<=31;i++){
 
 let d=document.createElement("div");
+
 d.className="day";
+
 d.innerHTML=i;
 
 d.onclick=()=>{
 
-document.getElementById("chosenDay").innerHTML=i+"/07";
+document.querySelectorAll(".day").forEach(x=>x.classList.remove("selected"));
 
-page2.classList.add("hidden");
-page3.classList.remove("hidden");
+d.classList.add("selected");
 
-}
+selectedDate=i+"/07/2026";
 
-calendar.appendChild(d);
+setTimeout(()=>{
 
-}
+document.getElementById("calendarPage").classList.add("hidden");
+document.getElementById("foodPage").classList.remove("hidden");
 
-const foods=document.querySelectorAll(".food");
-
-foods.forEach(f=>{
-
-f.onclick=()=>{
-
-document.getElementById("food").innerHTML=f.innerText;
-
-page3.classList.add("hidden");
-
-page4.classList.remove("hidden");
+},500);
 
 }
 
-});
+days.appendChild(d);
 
-yes.onclick=()=>{
+}
 
-page1.classList.add("hidden");
+function openCalendar(){
 
-page2.classList.remove("hidden");
+home.classList.add("hidden");
+
+calendarPage.classList.remove("hidden");
+
+}
+
+function finish(){
+
+foodPage.classList.add("hidden");
+
+confirm.classList.remove("hidden");
+
+document.getElementById("result").innerHTML=
+"📅 "+selectedDate+"<br><br>🍽️ Địa điểm ăn đã chọn";
 
 }
 

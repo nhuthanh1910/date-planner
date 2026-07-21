@@ -2,101 +2,328 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>em bấm vào đây đi</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
 
-<link rel="stylesheet" href="style.css">
+body{
+overflow:hidden;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(-45deg,#ff8fb1,#ffd6e7,#ffc1cc,#ffe9f2);
+background-size:400% 400%;
+animation:bg 10s ease infinite;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.container{
+position:relative;
+z-index:5;
+background:white;
+padding:40px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+width:750px;
+max-height:90vh;
+overflow:auto;
+}
+
+h1{
+color:#ff3d7f;
+margin-bottom:20px;
+}
+
+button{
+padding:14px 35px;
+border:none;
+border-radius:30px;
+font-size:18px;
+margin:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+#yes{
+background:#ff4f91;
+color:white;
+}
+
+#yes:hover{
+transform:scale(1.1);
+}
+
+#no{
+background:#ddd;
+position:absolute;
+}
+
+.hidden{
+display:none;
+}
+
+.calendar{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:10px;
+margin-top:20px;
+}
+
+.day{
+padding:15px;
+background:#ffe4ef;
+border-radius:15px;
+cursor:pointer;
+transition:.3s;
+font-weight:bold;
+}
+
+.day:hover{
+background:#ff7fab;
+color:white;
+transform:scale(1.08);
+}
+
+.food-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
+margin-top:25px;
+}
+
+.food{
+background:#fff0f6;
+padding:18px;
+border-radius:20px;
+cursor:pointer;
+transition:.3s;
+font-weight:bold;
+}
+
+.food:hover{
+background:#ff5d98;
+color:white;
+transform:translateY(-5px);
+}
+
+.final{
+font-size:22px;
+line-height:2;
+color:#ff2f78;
+}
+
+.heart{
+position:absolute;
+bottom:-30px;
+color:red;
+font-size:30px;
+animation:fly 7s linear infinite;
+transform-style:preserve-3d;
+}
+
+@keyframes fly{
+0%{
+transform:translateY(0) rotateY(0deg);
+opacity:1;
+}
+100%{
+transform:translateY(-110vh) rotateY(720deg);
+opacity:0;
+}
+}
+
+.petal{
+position:absolute;
+top:-20px;
+font-size:22px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:
+translateY(110vh)
+translateX(120px)
+rotate(360deg);
+}
+}
+
+.cursor{
+position:fixed;
+width:18px;
+height:18px;
+border-radius:50%;
+background:#fff;
+pointer-events:none;
+box-shadow:
+0 0 10px white,
+0 0 20px hotpink,
+0 0 40px deeppink;
+transform:translate(-50%,-50%);
+z-index:9999;
+}
+
+</style>
 </head>
+
 <body>
 
 <div class="cursor"></div>
 
-<div id="hearts"></div>
-
 <div class="container">
 
-<!-- Page 1 -->
-<section class="page active" id="page1">
+<div id="page1">
+<h1>💖 Em đi chơi với anh nha? 💖</h1>
 
-<h1>💌 Em đi chơi với anh nha?</h1>
-
-<div class="buttons">
 <button id="yes">YES ❤️</button>
-<button id="no">NO 😭</button>
+<button id="no">NO 😝</button>
 </div>
 
-</section>
+<div id="page2" class="hidden">
+<h1>📅 Chọn ngày đi chơi</h1>
 
-<!-- Page 2 -->
-<section class="page" id="page2">
-
-<h2>📅 Ngày đi chơi</h2>
-
-<div class="date-box">
-25 / 07
-</div>
-
-<button class="next">
-Tiếp tục →
-</button>
-
-</section>
-
-<!-- Page 3 -->
-<section class="page" id="page3">
-
-<h2>🍽️ Em muốn ăn gì?</h2>
-
-<div class="grid">
-
-<div class="food">🍝<span>Đồ Âu</span></div>
-<div class="food">🍣<span>Đồ Nhật</span></div>
-<div class="food">🍜<span>Đồ Hàn</span></div>
-<div class="food">🍲<span>Đồ Việt</span></div>
-<div class="food">🌶️<span>Đồ Thái</span></div>
+<div class="calendar" id="calendar"></div>
 
 </div>
 
-</section>
+<div id="page3" class="hidden">
 
-<!-- Page 4 -->
-<section class="page" id="page4">
+<h1>📍 Muốn ăn gì nè?</h1>
 
-<h1>I love emmmm ❤️</h1>
+<div class="food-grid">
 
-<button class="next">
-Tiếp tục
-</button>
-
-</section>
-
-<!-- Final -->
-<section class="page" id="page5">
-
-<div class="glass">
-
-<h2>📋 Xác nhận</h2>
-
-<p>❤️ Đã đồng ý đi chơi</p>
-
-<p>📅 25/07</p>
-
-<p id="foodResult">🍽️</p>
-
-<p>📍 Đã xác nhận</p>
-
-<p>⏰ Hẹn em lúc 14:00</p>
+<div class="food">🇰🇷 Đồ Hàn</div>
+<div class="food">🇪🇺 Đồ Âu</div>
+<div class="food">🇻🇳 Đồ Việt</div>
+<div class="food">🇹🇭 Đồ Thái</div>
+<div class="food">🇯🇵 Đồ Nhật</div>
+<div class="food">🇮🇳 Đồ Ấn</div>
+<div class="food">🇲🇾 Đồ Malay</div>
+<div class="food">🇰🇭 Đồ Campuchia</div>
 
 </div>
 
-</section>
+</div>
+
+<div id="page4" class="hidden">
+
+<h1>❤️ I love emmmm ❤️</h1>
+
+<div class="final">
+
+<p>📅 Ngày hẹn: <span id="chosenDay"></span></p>
+
+<p>🕑 Thời gian: <b>14:00</b></p>
+
+<p>🍽️ Món ăn: <span id="food"></span></p>
+
+<h2 style="margin-top:20px;">💖 Hẹn em nhé 💖</h2>
 
 </div>
 
-<script src="script.js"></script>
+</div>
+
+</div>
+
+<script>
+
+const cursor=document.querySelector(".cursor");
+
+document.addEventListener("mousemove",e=>{
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
+});
+
+const no=document.getElementById("no");
+
+no.onmouseover=()=>{
+no.style.left=Math.random()*500+"px";
+no.style.top=Math.random()*250+"px";
+}
+
+for(let i=0;i<40;i++){
+
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=4+Math.random()*5+"s";
+h.style.fontSize=20+Math.random()*25+"px";
+document.body.appendChild(h);
+
+}
+
+for(let i=0;i<40;i++){
+
+let p=document.createElement("div");
+p.className="petal";
+p.innerHTML="🌸";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=5+Math.random()*8+"s";
+p.style.animationDelay=Math.random()*5+"s";
+document.body.appendChild(p);
+
+}
+
+const calendar=document.getElementById("calendar");
+
+for(let i=1;i<=31;i++){
+
+let d=document.createElement("div");
+d.className="day";
+d.innerHTML=i;
+
+d.onclick=()=>{
+
+document.getElementById("chosenDay").innerHTML=i+"/07";
+
+page2.classList.add("hidden");
+page3.classList.remove("hidden");
+
+}
+
+calendar.appendChild(d);
+
+}
+
+const foods=document.querySelectorAll(".food");
+
+foods.forEach(f=>{
+
+f.onclick=()=>{
+
+document.getElementById("food").innerHTML=f.innerText;
+
+page3.classList.add("hidden");
+
+page4.classList.remove("hidden");
+
+}
+
+});
+
+yes.onclick=()=>{
+
+page1.classList.add("hidden");
+
+page2.classList.remove("hidden");
+
+}
+
+</script>
 
 </body>
 </html>
